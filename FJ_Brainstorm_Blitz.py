@@ -123,7 +123,7 @@ def main():
 
         st.subheader("Enter Answers for the MCQs:")
         columns = st.columns(4)
-        for i in range(1, 21):
+        for i in range(20):
             with columns[i % 4]:
                 answer_input = st.text_input(f"Answer for MCQ {i+1}:")
                 collected_answers.append(answer_input)
