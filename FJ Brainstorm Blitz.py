@@ -111,7 +111,9 @@ def main():
 
     if st.button("Generate MCQs") and designation_input:
         prompt = f"MCQ : What is related to {designation_input}? Generate 20 MCQs"
-        st.session_state.mcqs = info_generator.generate_content(prompt)
+        with st.spinner('Generating MCQs...'):
+            st.session_state.mcqs = info_generator.generate_content(prompt)
+        st.write("MCQs generated successfully!")
 
     if st.session_state.mcqs:
         st.subheader("Generated MCQs:")
@@ -127,17 +129,20 @@ def main():
                 collected_answers.append(answer_input)
 
         if st.button("Generate Result"):
-            input_string = f"Total MCQs are as follows:\n{st.session_state.mcqs}\nCheck collected answers in the list below one by one:\n{collected_answers}\n"
-            result = info_generator.generate_content(input_string)
+            with st.spinner('Generating Result...'):
+                input_string = f"Total MCQs are as follows:\n{st.session_state.mcqs}\nCheck collected answers in the list below one by one:\n{collected_answers}\n"
+                result = info_generator.generate_content(input_string)
             st.subheader("Generated Result:")
             st.write(result)
 
-        if st.button("Generate Suggestions Result"):
-            suggestions_input = f"Based on following question \n {st.session_state.mcqs} \n\n Check Collected Answers: {collected_answers} \n\n Generated Result with suggestions for learning: {result}"
-            suggestions = info_generator.generate_content(suggestions_input)
 
+        if st.button("Generate Suggestions Result"):
+            with st.spinner('Generating Suggestions...'):
+                suggestions_input = f"Based on the following question:\n{st.session_state.mcqs}\n\nCheck Collected Answers:\n{collected_answers}\n\nGenerated Result with suggestions for learning:\n{result}"
+                suggestions = info_generator.generate_content(suggestions_input)
             st.subheader("Suggestions for Learning:")
             st.write(suggestions)
+
 
 if __name__ == "__main__":
     main()
