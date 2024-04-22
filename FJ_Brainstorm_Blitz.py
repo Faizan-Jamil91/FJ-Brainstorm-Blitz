@@ -134,8 +134,21 @@ def main():
                 answers_text = "\n".join(collected_answers)
                 input_string = f"Generate a summary based on the following MCQs and collected answers:\n\nTotal MCQs:\n{mcqs_text}\n\nCheck collected answers in the list below one by one:\n{answers_text}\n"
                 result = info_generator.generate_content(input_string)
+        
+                # Split generated result into individual MCQs
+                generated_mcqs = result.split('\n')
+
+                # Calculate score
+                score = 0
+                for i, (generated_mcq, collected_answer) in enumerate(zip(generated_mcqs, collected_answers)):
+                    if generated_mcq.strip() == collected_answer.strip():
+                        score += 1
+        
             st.subheader("Generated Result:")
             st.write(result)
+            st.subheader("Score:")
+            st.write(f"Total Correct Answers: {score} out of 20")
+
 
 
         if st.button("Generate Suggestions Result"):
