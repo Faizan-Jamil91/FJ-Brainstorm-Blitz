@@ -137,12 +137,18 @@ def main():
 
 
         if st.button("Generate Suggestions Result"):
-            with st.spinner('Generating Suggestions...'):
-                suggestions_input = f"Based on the following question:\n{st.session_state.mcqs}\n\nCheck Collected Answers:\n{collected_answers}\n\nGenerated Result with suggestions for learning:\n{result}"
-                suggestions = info_generator.generate_content(suggestions_input)
-            st.subheader("Suggestions for Learning:")
-            st.write(suggestions)
+          with st.spinner('Generating Suggestions...'):
+                # Improved prompt construction
+                suggestions_input = f"""Based on the following MCQs related to your designation as {designation_input}:\n{st.session_state.mcqs}
+        
+        Your answers to the MCQs:\n{collected_answers}
 
+        The analysis of your performance on the MCQs:\n{result}
+
+        What are some key areas or topics you should focus on learning in the future to enhance your skills and knowledge?"""      
+                suggestions = info_generator.generate_content(suggestions_input)
+                st.subheader("Suggestions for Learning:")
+                st.write(suggestions)
 
 if __name__ == "__main__":
     main()
