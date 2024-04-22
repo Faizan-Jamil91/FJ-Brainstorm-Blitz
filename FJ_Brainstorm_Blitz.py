@@ -110,7 +110,7 @@ def main():
     designation_input = st.text_input("Enter your designation:")
 
     if st.button("Generate MCQs") and designation_input:
-        prompt = f"MCQ : What is related to {designation_input}? Generate 20 MCQs"
+        prompt = f"Generate 20 MCQs related to {designation_input}. Each question should test a key concept or skill associated with {designation_input}."
         with st.spinner('Generating MCQs...'):
             st.session_state.mcqs = info_generator.generate_content(prompt)
         st.write("MCQs generated successfully!")
