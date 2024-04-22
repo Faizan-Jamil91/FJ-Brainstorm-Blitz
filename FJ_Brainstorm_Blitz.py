@@ -130,17 +130,23 @@ def main():
 
         if st.button("Generate Result"):
             with st.spinner('Generating Result...'):
-                mcqs_text = "\n".join(st.session_state.mcqs)
-                answers_text = "\n".join(collected_answers)
-                input_string = f"Generate a summary based on the following MCQs and collected answers:\n\nTotal MCQs:\n{mcqs_text}\n\nCheck collected answers in the list below one by one:\n{answers_text}\n"
-                result = info_generator.generate_content(input_string)
+                # Construct prompt for generating result
+                prompt = "Generate a summary based on the following MCQs and collected answers:\n\n"
+                prompt += "Total MCQs:\n"
+                prompt += "\n".join(st.session_state.mcqs)
+                prompt += "\n\nCheck collected answers in the list below one by one:\n"
+                prompt += "\n".join(collected_answers)
+                prompt += "\n"
+
+                # Generate result based on prompt
+                result = info_generator.generate_content(prompt)
         
-                # Split generated result into individual MCQs
-                generated_mcqs = result.split('\n')
+                # Split generated result into individual lines
+                result_lines = result.strip().split('\n')
 
                 # Calculate score
                 score = 0
-                for i, (generated_mcq, collected_answer) in enumerate(zip(generated_mcqs, collected_answers)):
+                for i, (generated_mcq, collected_answer) in enumerate(zip(result_lines[:20], collected_answers)):
                     if generated_mcq.strip() == collected_answer.strip():
                         score += 1
         
