@@ -137,14 +137,14 @@ def main():
             st.subheader("Generated Result:")
             st.write(result)
 
-
-
         if st.button("Generate Suggestions Result"):
-          with st.spinner('Generating Suggestions...'):
-            suggestions_input = f"Based on the following question:\n{st.session_state.mcqs}\n\nCheck Collected Answers:\n{collected_answers}\n\nGenerated Result with suggestions for learning:\n{result}"
-            suggestions = info_generator.generate_content(suggestions_input)
-          st.subheader("Suggestions for Learning:")
-          st.write(suggestions)
+            with st.spinner('Generating Suggestions...'):
+                mcqs_text = "\n".join(st.session_state.mcqs)
+                answers_text = "\n".join(collected_answers)
+                suggestions_input = f"Generate suggestions for learning based on the following:\n\nMCQs:\n{mcqs_text}\n\nCollected Answers:\n{answers_text}\n\nGenerated Result:\n{result}\n"
+                suggestions = info_generator.generate_content(suggestions_input)
+            st.subheader("Suggestions for Learning:")
+            st.write(suggestions)
 
 if __name__ == "__main__":
     main()
