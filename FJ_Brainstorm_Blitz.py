@@ -143,20 +143,9 @@ def main():
         
                 # Split generated result into individual lines
                 result_lines = result.strip().split('\n')
-
-                # Calculate score
-                score = 0
-                for i, (generated_mcq, collected_answer) in enumerate(zip(result_lines[:20], collected_answers)):
-                    if generated_mcq.strip() == collected_answer.strip():
-                        score += 1
         
             st.subheader("Generated Result:")
             st.write(result)
-    
-            # Display score
-            st.subheader("Score:")
-            st.write(f"{score} correct out of 20")
-
 
         if st.button("Generate Suggestions Result"):
             with st.spinner('Generating Suggestions...'):
