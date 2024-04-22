@@ -146,9 +146,10 @@ def main():
         
             st.subheader("Generated Result:")
             st.write(result)
+    
+            # Display score
             st.subheader("Score:")
-            st.write(f"Total Correct Answers: {score} out of 20")
-
+            st.write(f"{score} correct out of 20")
 
 
         if st.button("Generate Suggestions Result"):
