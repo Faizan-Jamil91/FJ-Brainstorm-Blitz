@@ -117,23 +117,22 @@ def main():
 
     if st.session_state.mcqs:
         st.subheader("Generated MCQs:")
-        st.write(st.session_state.mcqs)
+        mcq_list = st.session_state.mcqs.split('\n')  # Split MCQs into a list
 
-        collected_answers = []
+        collected_answers = []  # Initialize list to collect answers
 
-        st.subheader("Enter Answers for the MCQs:")
-        columns = st.columns(4)
-        for i in range(20):
-            with columns[i % 4]:
-                answer_input = st.text_input(f"Answer for MCQ {i+1}:")
-                collected_answers.append(answer_input)
+        for i, mcq in enumerate(mcq_list):
+            st.write(f"MCQ {i+1}: {mcq}")  # Display the MCQ
+            answer_input = st.text_input(f"Answer for MCQ {i+1}:")  # Display input field for answer
+            collected_answers.append(answer_input)  # Collect the answer
 
+        # Once all answers are collected, you can proceed to generate result or suggestions
         if st.button("Generate Result"):
             with st.spinner('Generating Result...'):
                 # Construct prompt for generating result
                 prompt = "Generate a summary based on the following MCQs and collected answers:\n\n"
                 prompt += "Total MCQs:\n"
-                prompt += "\n".join(st.session_state.mcqs)
+                prompt += "\n".join(mcq_list)
                 prompt += "\n\nCheck collected answers in the list below one by one:\n"
                 prompt += "\n".join(collected_answers)
                 prompt += "\n"
@@ -149,7 +148,7 @@ def main():
 
         if st.button("Generate Suggestions Result"):
             with st.spinner('Generating Suggestions...'):
-                mcqs_text = "\n".join(st.session_state.mcqs)
+                mcqs_text = "\n".join(mcq_list)
                 answers_text = "\n".join(collected_answers)
                 suggestions_input = f"Generate suggestions for learning based on the following:\n\nMCQs:\n{mcqs_text}\n\nCollected Answers:\n{answers_text}\n\nGenerated Result:\n{result}\n"
                 suggestions = info_generator.generate_content(suggestions_input)
