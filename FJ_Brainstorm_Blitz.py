@@ -130,10 +130,13 @@ def main():
 
         if st.button("Generate Result"):
             with st.spinner('Generating Result...'):
-                input_string = f"Total MCQs are as follows:\n{st.session_state.mcqs}\nCheck collected answers in the list below one by one:\n{collected_answers}\n"
+                mcqs_text = "\n".join(st.session_state.mcqs)
+                answers_text = "\n".join(collected_answers)
+                input_string = f"Generate a summary based on the following MCQs and collected answers:\n\nTotal MCQs:\n{mcqs_text}\n\nCheck collected answers in the list below one by one:\n{answers_text}\n"
                 result = info_generator.generate_content(input_string)
             st.subheader("Generated Result:")
             st.write(result)
+
 
 
         if st.button("Generate Suggestions Result"):
