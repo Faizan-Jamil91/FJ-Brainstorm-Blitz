@@ -132,19 +132,10 @@ def main():
             with st.spinner('Generating Result...'):
                 mcqs_text = "\n".join(st.session_state.mcqs)
                 answers_text = "\n".join(collected_answers)
-                # Generate a summary based on the MCQs and collected answers
                 input_string = f"Generate a summary based on the following MCQs and collected answers:\n\nTotal MCQs:\n{mcqs_text}\n\nCheck collected answers in the list below one by one:\n{answers_text}\n"
                 result = info_generator.generate_content(input_string)
-        
-                # Generate correct answers in the form of ABCD
-                correct_answers = ["A", "B", "C", "D"]  # Assuming there are always 4 options
-                correct_answers_text = "\n".join([f"Correct Answer for MCQ {i+1}: {correct_answers[i]}" for i in range(len(correct_answers))])
-        
-                # Combine the summary with correct answers
-                result_with_answers = f"{result}\n\n{correct_answers_text}"
-        
             st.subheader("Generated Result:")
-            st.write(result_with_answers)
+            st.write(result)
 
 
         if st.button("Generate Suggestions Result"):
