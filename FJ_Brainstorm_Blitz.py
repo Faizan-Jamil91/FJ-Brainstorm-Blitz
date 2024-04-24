@@ -89,7 +89,7 @@ def main():
                 result = info_generator.generate_content(input_string)
                 input_string2 = f"Match the answers provided by the collected answer option{collected_answers_df} is equal to the {result} generated answer option and calculate the correct and incorrect answer if no answer match with the date its mean that all answers are incorrect"
                 result2 = info_generator.generate_content(input_string2)
-                input_string3 = f"please provide the score {result2}"
+                input_string3 = f"please provide the sumrized result {result2}"
                 result3 = info_generator.generate_content(input_string3)
             st.subheader("Generated Result:")
             st.write(result)
