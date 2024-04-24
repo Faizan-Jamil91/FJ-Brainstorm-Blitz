@@ -87,7 +87,7 @@ def main():
             with st.spinner('Generating Result...'):
                 input_string = f"Provide the answer keys for the following questions related to {topic_input}: \n{st.session_state.mcqs} \nPlease provide the answers in capital letters (e.g., ABCD) in the format of a DataFrame."
                 result = info_generator.generate_content(input_string)
-                input_string2 = f"Match the answers provided by the {collected_answers_df} is equal to the {result} and calculate the correct and incorrect answer if no answer match with the date its mean that all answers are incorrect"
+                input_string2 = f"Match the answers provided by the {collected_answers_df} option  is equal to the {result} answer option and calculate the correct and incorrect answer if no answer match with the date its mean that all answers are incorrect"
                 result2 = info_generator.generate_content(input_string2)
                 input_string3 = f"please provide the score {result2}"
                 result3 = info_generator.generate_content(input_string3)
