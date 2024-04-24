@@ -80,8 +80,6 @@ def main():
                 collected_answers.append(answer_input)
 
         if st.button("Generate Result"):
-            # Display the collected answers
-            st.subheader("Collected Answers:")
             # Create a DataFrame for collected answers
             collected_answers_df = pd.DataFrame({'Question': range(1, 21), 'Answer': collected_answers})
             collected_answers_df.index = collected_answers_df.index + 1
