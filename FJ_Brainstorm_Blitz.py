@@ -91,7 +91,7 @@ def main():
 
     # UI Configuration
     st.set_page_config(
-        page_title="FJ Brainstorm Blitz", 
+        page_title="JBS Brainstorm Blitz", 
         page_icon="🧠", 
         layout="centered"
     )
@@ -99,7 +99,7 @@ def main():
     # Header Section
     st.markdown("""
     <div style="text-align: center; margin-bottom: 30px;">
-        <h1 style="color: #2563EB;">🧠 FJ Brainstorm Blitz</h1>
+        <h1 style="color: #2563EB;">🧠 JBS Brainstorm Blitz</h1>
         <p style="font-size: 1.1rem; color: #4B5563;">
         Revolutionizing MCQ creation with AI-powered learning experiences
         </p>
@@ -109,7 +109,7 @@ def main():
     # Introduction
     with st.expander("About this App", expanded=True):
         st.markdown("""
-        **FJ Brainstorm Blitz** is a dynamic application that:
+        **JBS Brainstorm Blitz** is a dynamic application that:
         
         - 🚀 Generates tailored multiple-choice questions based on your expertise
         - 📊 Evaluates your answers with detailed performance analysis
@@ -284,8 +284,9 @@ def main():
 
     # Footer
     st.markdown("---")
-    st.caption("© 2023 FJ Brainstorm Blitz | AI-Powered Learning Assistant")
+    st.caption("© 2024 JBS Brainstorm Blitz | AI-Powered Learning Assistant")
 
 
 if __name__ == "__main__":
     main()
+
