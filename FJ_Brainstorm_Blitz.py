@@ -7,7 +7,7 @@ class TestGenerator:
     def __init__(self):
         try:
             # Securely fetch API key from Streamlit secrets
-            self.api_key = "AIzaSyCYyo69R1YhYArdTbs765WTi70-93D0r4Y"
+            self.api_key = "AIzaSyApPXMTraGt1wwlr5wpRkGImIBSkMM5LJU"
             genai.configure(api_key=self.api_key)
             
             self.generation_config = {
@@ -289,4 +289,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
