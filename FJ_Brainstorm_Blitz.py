@@ -25,7 +25,7 @@ class TestGenerator:
             ]
 
             self.model = genai.GenerativeModel(
-                model_name="gemini-2.5-flash",
+                model_name="gemini-2.0-flash",
                 generation_config=self.generation_config,
                 safety_settings=self.safety_settings
             )
@@ -289,6 +289,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
